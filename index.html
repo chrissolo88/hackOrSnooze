@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.1/dist/journal/bootstrap.css">
+    <title>Hack or Snooze</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="nav-all" href="#">
+                <h3><span><i class="fa-solid fa-microchip fa-lg m-2"></i></span>h@ck || Sn00ze</h3>    
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse show" id="navbar" >
+                <ul class="navbar-nav me-auto main-nav-links">
+                    <li class="nav-item">
+                        <a class="nav-link" id="submit-link" href="#">&lt;Submit&gt;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" id="fav-link" href="#">&lt;Favorites&gt;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" id="my-link" href="#">&lt;My Stories&gt;</a>
+                    </li>
+                </ul>
+                <form class=" ml-auto">    
+                    <div class="input-group">
+                        <span class="input-group-text p-2"><i class="fa-solid fa-user-secret"></i></span>
+                        <button class="btn btn-outline-secondary bg-white my-2 my-sm-0 rounded" type="submit" id="nav-login">Sign In</button>
+                        <button class="btn btn-outline-secondary bg-white my-2 my-sm-0 rounded hidden" type="submit" id="nav-logout">Sign Out</button>
+                        <a class="nav-link m-1 hidden" href="#" id="nav-user-profile"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="alert alert-dismissible alert-warning" id="signinWarning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Welcome</h4>
+        <p class="mb-0">You are not signed in, if you want to create or favorite articles please <a href="#" class="alert-link hidden">sign in or create an account</a>.</p>
+    </div>
+    <div class="stories-container container">
+        <div id="stories-loading-msg">Loading&hellip;</div>
+            <ol id="all-stories-list" class="stories-list bg-light">
+            </ol>
+        </div>
+    </div>
+    <!-- Login and signup forms -->
+<section class="account-forms-container container">
+
+    <!-- Login form -->
+    <form action="#" id="login-form" class="account-form hidden " method="post">
+      <h4>Login</h4>
+      <div class="login-input m-2">
+        <label for="login-username">username</label>
+        <input id="login-username" autocomplete="current-username">
+      </div>
+      <div class="login-input m-2">
+        <label for="login-password">password</label>
+        <input id="login-password" type="password" autocomplete="current-password">
+      </div>
+      <button type="submit">login</button>
+      <hr>
+    </form>
+  
+    <!-- Signup form -->
+    <form action="#" id="signup-form" class="account-form hidden " method="post">
+      <h4>Create Account</h4>
+      <div class="login-input m-2">
+        <label for="signup-name">name</label>
+        <input id="signup-name" autocapitalize="words">
+      </div>
+      <div class="login-input m-2">
+        <label for="signup-username">username</label>
+        <input id="signup-username" autocomplete="new-username">
+      </div>
+      <div class="login-input m-2">
+        <label for="signup-password">password</label>
+        <input id="signup-password" autocomplete="new-password" type="password">
+      </div>
+      <button type="submit">create account</button>
+    </form>
+</section>
+<section class="story-form-container container">
+    <form action="#" id="story-form" class="hidden" method="post">
+        <h4>New Story</h4> 
+        <div class="story-input m-2">
+            <label for="story-title">Title:</label>
+            <input type="text" id="story-title">
+        </div>
+        <div class="story-input m-2">
+            <label for="story-author">Author:</label>
+            <input type="text" id="story-author">
+        </div>
+        <div class="story-input m-2">
+            <label for="story-url">URL:</label>
+            <input type="text" id="story-url">
+        </div>
+        <button type="submit">Submit</button>
+        <hr>
+    </form>
+</section>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="js/models.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/stories.js"></script>
+</body>
+</html>
