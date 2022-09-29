@@ -66,7 +66,7 @@ async function newStory(evt) {
       url: url
     }));
   getAndShowStoriesOnStart();
-  myLinkState()
+  myLinkState();
   signedInPageComponents();
   $storyForm.hide();
   $storyForm.trigger("reset");
@@ -80,44 +80,45 @@ async function favoriteToggle(evt) {
   const story = storyList.stories.find(s => s.storyId === storyId);
   const method = $trgt.hasClass('fa-regular')? 'POST' : 'DELETE'
   starToggle($trgt);
-  await currentUser.toggleFavoriteStory(story, method)
+  await currentUser.toggleFavoriteStory(story, method);
   favLinkState();
 }
 
-$allStoriesList.on('click','.fa-star',favoriteToggle)
+$allStoriesList.on('click','.fa-star',favoriteToggle);
 
 const starToggle = ($trgt) => {
   if ($trgt.hasClass('fa-regular')){
-    $trgt.addClass('fa-solid')
-    $trgt.removeClass('fa-regular')
+    $trgt.addClass('fa-solid');
+    $trgt.removeClass('fa-regular');
   } else {
-    $trgt.addClass('fa-regular')
-    $trgt.removeClass('fa-solid')
-  }
-}
+    $trgt.addClass('fa-regular');
+    $trgt.removeClass('fa-solid');
+  };
+};
 
 function showFavStories() {
-  $allStoriesList.empty()
+  $allStoriesList.empty();
   for (let story of currentUser.favorites) {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
-  }
-  currentUser.starFav()
-}
+  };
+  currentUser.starFav();
+};
 function showMyStories() {
-  $allStoriesList.empty()
+  $allStoriesList.empty();
   for (let story of currentUser.ownStories) {
     const $story = generateStoryMarkup(story);
-    $story.prepend('<i class="fas fa-trash-alt" style="cursor:pointer;"></i>')
+    $story.prepend('<i class="fas fa-trash-alt" style="cursor:pointer;"></i>');
     $allStoriesList.append($story);
-  }
-  currentUser.starFav()
-}
+  };
+  currentUser.starFav();
+};
 
 async function deleteMyStory(evt) {
   const $trgt = $(evt.target).closest('li');
-  storyList.deleteStory(currentUser,$trgt.attr('id'))
+  storyList.deleteStory(currentUser,$trgt.attr('id'));
   $trgt.remove();
+  myLinkState();
 }
 
 $allStoriesList.on('click','.fa-trash-alt',deleteMyStory)
